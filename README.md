@@ -1,1 +1,1 @@
-A simple weeeb app - provides Search interface
+A simple web app - provides Search interface
