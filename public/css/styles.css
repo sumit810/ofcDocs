@@ -332,6 +332,8 @@ textarea {
   overflow: auto;
 }
 
+
+
 /**
  * 1. Add the correct box sizing in IE 10-.
  * 2. Remove the padding in IE 10-.
@@ -457,10 +459,11 @@ legend {
   min-height: 100vh;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  /* -ms-flex-align: center;
-      align-items: center; */
+  flex-direction: column;
+  /* -ms-flex-pack: center;
+      justify-content: center; */
+  -ms-flex-align: center;
+      align-items: center;
   font-family: 'Poppins', sans-serif;
   /* background: url("../images/Search_001.png"); */
   background-color: black;
@@ -472,10 +475,27 @@ legend {
 .s01 form {
   width: 100%;
   max-width: 1290px;
+  height: 30%;
 }
 
+.s01 h2 {
+  width: 100%;
+  max-width: 1290px;
+  color: white;
+}
+.s01 table {
+  width: 100%;
+  max-width: 1290px;
+  color: white;
+}
+
+.s01 thead {
+  text-align: left;
+}
+
+
 .s01 form legend {
-  font-size: 72px;
+  font-size: 40px;
   line-height: 1;
   color: #fff;
   /* margin-bottom: 60px; */
@@ -492,6 +512,7 @@ legend {
   -ms-flex-align: center;
       align-items: center;
 }
+
 
 .s01 form .inner-form .input-field {
   margin-right: 30px;
@@ -534,10 +555,10 @@ legend {
       flex-grow: 1;
 }
 
-.s01 form .inner-form .input-field.second-wrap {
+/* .s01 form .inner-form .input-field.second-wrap {
   width: 32.77%;
   min-width: 180px;
-}
+} */
 
 .s01 form .inner-form .input-field.third-wrap {
   width: 180px;
@@ -596,10 +617,10 @@ legend {
     width: 100%;
     margin-bottom: 20px;
   }
-  .s01 form .inner-form .input-field.second-wrap {
+  /* .s01 form .inner-form .input-field.second-wrap {
     width: calc(50% - 10px);
     min-width: auto;
-  }
+  } */
   .s01 form .inner-form .input-field.third-wrap {
     width: calc(50% - 10px);
   }
@@ -607,3 +628,4 @@ legend {
     font-size: 16px;
   }
 }
+

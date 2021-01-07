@@ -5,14 +5,17 @@ const ejs = require('ejs')
 
 const app = express();
 
+let docs = [];
+let searchStr = "";
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-// app.set("view engine", "ejs");
+app.set("view engine", "ejs");
 
 mongoose.connect("mongodb://localhost:27017/bko", {useNewUrlParser: true, useUnifiedTopology: true});
 
 const documentSchema = mongoose.Schema({    
-    "dept" : String,
+  "dept" : String,
 	"district" : String,
 	"docId" : Number,
 	"docLocation" : String,
@@ -25,14 +28,15 @@ const documentSchema = mongoose.Schema({
 
 const Document = mongoose.model("Documents", documentSchema);
 
+// let search0 = true;
 
 app.route("/search")
     .get((req, res) => {
-        console.log(__dirname);
-        res.sendFile(__dirname + "/search.html");
+        res.render("search", {docs: docs, searchStr: searchStr});
     })
     .post((req, res) => {
-        console.log(req.body);
+        
+        
         Document.find(
           { $text: { $search: req.body.searchString } },
           { score: { $meta: "textScore" } },
@@ -40,7 +44,9 @@ app.route("/search")
             if (err) {
               res.send(err);
             } else {
-              res.send(result);
+              docs = result;
+              searchStr = req.body.searchString;
+              res.redirect("/search");
             }
           }
         ).sort({ score: { $meta: "textScore" } });
@@ -48,5 +54,5 @@ app.route("/search")
 
 
 app.listen(3000, () => {
-    console.log("Server is running");
+    console.log("Server is running on port 3000");
 })

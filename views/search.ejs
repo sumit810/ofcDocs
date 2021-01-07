@@ -1,0 +1,49 @@
+<%- include ("partials/header") -%>
+
+    <div class="s01">
+      <form action="/search" method="post">
+        <fieldset>
+          <legend>Let's find the documents</legend>
+        </fieldset>
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <input id="search" type="text" name="searchString" placeholder="What are you looking for?" ></input>
+          </div>
+          <div class="input-field third-wrap"> 
+            <button class="btn-search" name="submit" type="submit">Search</button>
+          </div>
+        </div> 
+      </form>
+      
+      <% if (searchStr.length > 0) { %>
+        <% if (docs.length === 0) { %>
+          <h2>No results for your search:&emsp;<em><%= searchStr %></em></h2>
+        <% } else { %>
+          <h2>Results for your search:&emsp;<em><%= searchStr %></em></h2>
+          <table class="table table-condensed">   
+            <thead>
+              <tr>
+                <th>Bhatta</th>
+                <th>VPO, Teh, Distt</th>
+                <th>Pin</th>
+                <th>Dept</th>
+                <th>Document</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% docs.forEach(function(doc) { %>
+                  <tr>
+                    <td><%= doc.partyName %></td>
+                    <td><%= doc.vpo + ", " + doc.tehsil + " - " + doc.district %></td>
+                    <td><%= doc.pinCode  %></td>
+                    <td><%= doc.dept %></td>
+                    <td> <a href="<%= doc.docLocation %>"><%= doc.docType %></a></td>
+                  </tr>
+                <% }) %>
+            </tbody>
+          </table>
+        <% } %>
+      <% } %>
+    </div>
+
+<%- include ("partials/footer") -%>
