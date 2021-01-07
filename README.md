@@ -1,1 +1,1 @@
-Just a simple web app that does mongo FTS at backend.
+A simple weeeb app - provides Search interface
