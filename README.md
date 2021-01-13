@@ -1,1 +1,1 @@
-A simple web app - provides Search interface
+A simple web app - provides Search interface changes
